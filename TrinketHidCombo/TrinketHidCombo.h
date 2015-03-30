@@ -58,6 +58,7 @@ class Trinket_Hid_Combo : public Print
 		// type out a single ASCII character
 		void typeChar(uint8_t ascii);
 
+		void pressMMKeys(uint8_t modifiers, uint8_t keycode1);
 		void pressMultimediaKey(uint8_t key);
 		void pressSystemCtrlKey(uint8_t key);
 
@@ -97,6 +98,9 @@ extern Trinket_Hid_Combo TrinketHidCombo;
 #define KEYCODE_MOD_RIGHT_SHIFT		0x20
 #define KEYCODE_MOD_RIGHT_ALT		0x40
 #define KEYCODE_MOD_RIGHT_GUI		0x80
+
+#define KEYCODE_MOD_LEFT_SHIFT_ALT	0x06
+
 
 // some more keycodes
 #define KEYCODE_LEFT_CONTROL	0xE0

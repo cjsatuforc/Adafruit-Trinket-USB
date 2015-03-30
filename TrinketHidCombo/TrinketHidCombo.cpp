@@ -98,6 +98,30 @@ void Trinket_Hid_Combo::pressKey(uint8_t modifiers, uint8_t keycode1, uint8_t ke
 	usbReportSend(REPSIZE_KEYBOARD);
 }
 
+
+void Trinket_Hid_Combo::pressMMKeys(uint8_t modifiers, uint8_t keycode1)
+{
+	report_buffer[1] = modifiers;
+	report_buffer[2] = 0; // reserved
+	report_buffer[3] = keycode1;
+	report_buffer[4] = 0;
+	report_buffer[5] = 0;
+	report_buffer[6] = 0;
+	report_buffer[7] = 0;
+	report_buffer[0] = REPID_KEYBOARD;
+	usbReportSend(REPSIZE_KEYBOARD);
+
+	report_buffer[1] = 0;
+	report_buffer[2] = 0; // reserved
+	report_buffer[3] = 0;
+	report_buffer[4] = 0;
+	report_buffer[5] = 0;
+	report_buffer[6] = 0;
+	report_buffer[7] = 0;
+	report_buffer[0] = REPID_KEYBOARD;
+	usbReportSend(REPSIZE_KEYBOARD);
+}
+
 // presses a list of keys, do not exceed 5 keys
 void Trinket_Hid_Combo::pressKeys(uint8_t modifiers, uint8_t* keycodes, uint8_t sz)
 {
